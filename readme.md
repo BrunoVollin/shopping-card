@@ -3,4 +3,5 @@
 
 ## 🚧 👷 Construction in progress
 ## UML diagram:
-<img src="./diagrams/uml.jpg">
+<img src="./diagrams/uml.jpg" style="width: 100%">
+
