@@ -1,33 +1,19 @@
-import * as express from 'express';
-import * as bodyParser from "body-parser";
-import { WelcomeController } from './router';
+import * as express from "express";
+import { connectToDatabase } from "./services/database.service";
+import { usersRouter } from "./router/user.router";
 
-const app: express.Application = express();
+const app = express();
+const port = 3003;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+connectToDatabase()
+  .then(() => {
+    app.use("/games", usersRouter);
 
-app.use('/welcome', WelcomeController);
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}/`);
-});
-
-
-// import { Client } from "./model/Client";
-// import { Product } from "./model/Product";
-
-// const bruno = new Client({ name: "Bruno", age: 21, password: "123" });
-
-// const farcry6 = new Product({
-//   name: "Farcry 6",
-//   bland: "Ubisoft",
-//   description: "New fps game",
-//   price: 299.99,
-// });
-
-// bruno.addProduct(farcry6);
-
-// console.log(bruno.getShoppingCard());
+    app.listen(port, () => {
+      console.log(`Server started at http://localhost:${port}`);
+    });
+  })
+  .catch((error: Error) => {
+    console.error("Database connection failed", error);
+    process.exit();
+  });
