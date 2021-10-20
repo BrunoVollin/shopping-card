@@ -2,10 +2,10 @@ import { Product } from "./Product";
 
 export class Client {
   name: string;
-  private age: number;
-  private password: string;
+  age: number;
+  private _password: string;
   private _shoppingCard: Array<Product> = [];
-
+  
   constructor({
     name,
     age,
@@ -17,14 +17,23 @@ export class Client {
   }) {
     this.name = name;
     this.age = age;
-    this.password = password;
+    this._password = password;
   }
-
+  
   public getShoppingCard(): Array<Product> {
     return this._shoppingCard;
   }
-
+  
   public addProduct(product: Product) {
     this._shoppingCard.push(product);
   }
+
+  public getPassword(): string {
+    return this._password;
+  }
+
+  public setPassword(value: string) {
+    this._password = value;
+  }
+  
 }
