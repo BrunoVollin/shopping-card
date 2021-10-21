@@ -1,4 +1,4 @@
-import knex, { Knex } from "knex";
+import { Knex } from "knex";
 import { Client } from "../../model/Client";
 
 export async function seed(knex: Knex) {
@@ -10,8 +10,8 @@ export async function seed(knex: Knex) {
     }),
     new Client({
       age: 12,
-      name: "Enz1o",
-      password: "man222em33",
+      name: "Bruno",
+      password: "batata123",
     }),
   ];
 
