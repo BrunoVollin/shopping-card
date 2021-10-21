@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node-dev --respawn src/server.ts",
     "knex:migration": "knex --knexfile knexfile.ts migrate:latest",
-    "knex:seeds": "knex --knexfile knexfile.ts seed:run"
+    "knex:seeds": "knex --knexfile knexfile.ts seed:run",
+    "knex:all": "knex --knexfile knexfile.ts migrate:latest && knex --knexfile knexfile.ts seed:run"
   },
   "keywords": [],
   "author": "",
